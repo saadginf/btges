@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html layout:decorator="~{template1.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div layout:fragment="content">
+       
+        <form th:action="@{/saveMilitaire}" method="POST" class="user">
+            
+            <div class="row justify-content-center" >
+           <div class="col-md-3  col-sm-12 col-xs-12" >
+            
+                <div class="form-group">
+                  <input type="number" class="form-control form-control-user" id="matricule" name="matricule" placeholder="N° Matricule">
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-user" id="nom" name="nom" placeholder="Nom">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="prenom" name="prenom" placeholder="Prenom">
+                  </div>
+
+                <div class="form-group">
+                    <input type="date" class="form-control form-control-user" id="datenaissance" name ="datenaissance" placeholder="Date de Naissance">
+                </div>
+
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input form-control-user" type="radio" name="detacheAuCorps" id="detacheAuCorps" value="0" >
+                    <label class="form-check-label" for="detacheAuCorps">
+                      Détaché au corps
+                    </label>
+                  </div>  
+                  
+                  <div class="form-check">
+                    <input class="form-check-input form-control-user" type="radio" name="detacheAuCorps" id="detacheAuCorps" value="1" checked>
+                    <label class="form-check-label" for="detacheAuCorps">
+                      Appartenant au corps
+                    </label>
+                   
+                    <br>
+                </div>  
+           </div>
+           <div class="col-md-3  col-sm-12 col-xs-12">
+            <div>
+                <div class="form-group">
+                      <select class="form-control" name="sexe" id="sexe">
+                        <option value="">SEXE</option>
+                        <option value="1">FEMME</option>
+                        <option value="0">HOMME</option>
+                      </select>
+                    </div>
+
+
+
+
+                      <div class="form-group">
+                       
+                        <select multiple="multiple" class="form-control" name="stages"  id="grade">
+                        <option value="">--Stages--</option>
+                        <option th:each="o : ${listSt}" th:value="${o.id}" th:text="${o.libbele}"></option>
+                        </select>
+                    
+                    </div>
+                      <div class="form-group">
+                       
+                        <select class="form-control" name="position"  id="grade">
+                        <option value="">--Position--</option>
+                        <option th:each="o : ${listPos}" th:value="${o.id}" th:text="${o.libbele}"></option>
+                        </select>
+                    
+                    </div>
+
+
+
+                      <div class="form-group">
+                       
+                        <select class="form-control" name="origine"  id="grade">
+                        <option value="">--Origine--</option>
+                        <option th:each="o : ${listOr}" th:value="${o.id}" th:text="${o.libbele}"></option>
+                        </select>
+                    
+                    </div>
+                    <div class="form-group">
+                       
+                      <select class="form-control" name="categorie"  id="grade">
+                      <option value="">--Catégorie--</option>
+                      <option th:each="o : ${listCat}" th:value="${o.id}" th:text="${o.libbele}"></option>
+                      </select>
+                  
+                  </div>
+                      <div class="form-group">
+                       
+                          <select class="form-control" name="grade"  id="grade">
+                          <option value="">--GRADE--</option>
+                          <option th:each="o : ${listGr}" th:value="${o.id}" th:text="${o.libbele}"></option>
+                          </select>
+                      
+                      </div>
+                      </div>
+                </div>
+             
+                </div>
+               
+               
+                <div class="row justify-content-center">
+               
+                  <div class="col-6">
+                <button type="submit"  class="btn btn-primary btn-user btn-block">
+                 Enregistrer
+            </button>
+                </div>
+                </div>
+              </form>
+
+       
+       
+
+    </div>
+
+</body>
+</html>

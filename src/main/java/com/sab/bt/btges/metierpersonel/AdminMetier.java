@@ -4,8 +4,10 @@ import java.util.List;
 
 import com.sab.bt.btges.entities.Affectation;
 import com.sab.bt.btges.entities.Categorie;
+import com.sab.bt.btges.entities.Grade;
 import com.sab.bt.btges.entities.Origine;
 import com.sab.bt.btges.entities.Position;
+import com.sab.bt.btges.entities.Stages;
 
 public interface AdminMetier {
     //AFFECATION______
@@ -36,6 +38,18 @@ public interface AdminMetier {
 
 
 	public Position addPosition(Position position);
+
+
+	public List<Stages> getStages();
+
+
+	public Stages addStage(Stages stages);
+
+
+	public Grade addGrade(Grade grade);
+
+
+	public List<Grade> getGrades();
 
 
 

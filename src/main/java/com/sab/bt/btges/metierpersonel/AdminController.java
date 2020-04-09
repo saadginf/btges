@@ -4,8 +4,10 @@ import java.util.List;
 
 import com.sab.bt.btges.entities.Affectation;
 import com.sab.bt.btges.entities.Categorie;
+import com.sab.bt.btges.entities.Grade;
 import com.sab.bt.btges.entities.Origine;
 import com.sab.bt.btges.entities.Position;
+import com.sab.bt.btges.entities.Stages;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -69,14 +71,42 @@ public class AdminController {
     @RequestMapping("/position")
     public String positions(Model model){
         List<Position> listPos = adm.getPositions();
-        model.addAttribute("listOr", listPos);
+        model.addAttribute("listPos", listPos);
         return "position";
     }
     @RequestMapping("/ajouterPosition")
     public String ajouterPos(Model model,String nomCat){
         adm.addPosition(new Position(nomCat));
         List<Position> listPos = adm.getPositions();
-        model.addAttribute("listOr", listPos);
+        model.addAttribute("listPos", listPos);
         return "position";
+    }
+    @RequestMapping("/stage")
+    public String stages(Model model){
+        List<Stages> listSt = adm.getStages();
+        model.addAttribute("listSt", listSt);
+        return "stage";
+    }
+    @RequestMapping("/ajouterStage")
+    public String ajouterSt(Model model,String nomCat){
+        adm.addStage(new Stages(nomCat));
+        List<Stages> listSt = adm.getStages();
+        model.addAttribute("listSt", listSt);
+        
+        return "stage";
+    }
+    @RequestMapping("/grade")
+    public String grades(Model model){
+        List<Grade> listGr = adm.getGrades();
+        model.addAttribute("listGr", listGr);
+        return "grade";
+    }
+    @RequestMapping("/ajouterGrade")
+    public String ajouterGr(Model model,String nomCat){
+        adm.addGrade(new Grade(nomCat));
+        List<Grade> listGr = adm.getGrades();
+        model.addAttribute("listGr", listGr);
+        
+        return "grade";
     }
 }

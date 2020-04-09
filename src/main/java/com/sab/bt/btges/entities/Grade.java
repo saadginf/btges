@@ -1,6 +1,6 @@
 package com.sab.bt.btges.entities;
 
-import java.util.Date;
+
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -11,11 +11,14 @@ public class Grade extends infoMilitaire {
     @OneToMany(mappedBy = "grade")
     private Set<Militaire> miltaires;
    
-    public Grade(Long id, String libbele) {
+    public Grade(String libbele) {
         super(libbele);
         // TODO Auto-generated constructor stub
     }
-    
+    public Grade() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
     /**
      * @return Set<Militaire> return the miltaires

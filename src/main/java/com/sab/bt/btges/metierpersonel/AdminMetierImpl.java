@@ -4,12 +4,16 @@ import java.util.List;
 
 import com.sab.bt.btges.daopersonel.AffectationRepository;
 import com.sab.bt.btges.daopersonel.CategorieRepository;
+import com.sab.bt.btges.daopersonel.GradeRepository;
 import com.sab.bt.btges.daopersonel.OrigineRepository;
 import com.sab.bt.btges.daopersonel.PositionRepository;
+import com.sab.bt.btges.daopersonel.StagesRepository;
 import com.sab.bt.btges.entities.Affectation;
 import com.sab.bt.btges.entities.Categorie;
+import com.sab.bt.btges.entities.Grade;
 import com.sab.bt.btges.entities.Origine;
 import com.sab.bt.btges.entities.Position;
+import com.sab.bt.btges.entities.Stages;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +30,11 @@ public class AdminMetierImpl implements AdminMetier {
     private OrigineRepository orRepo;
     @Autowired
     private PositionRepository posRepo;
+    @Autowired
+    StagesRepository stRepo;
+    @Autowired
+    GradeRepository grRepo;
+
     @Override
     public Affectation addAffectation(Affectation a) {
         return affRepo.save(a);
@@ -76,6 +85,29 @@ public class AdminMetierImpl implements AdminMetier {
     @Override
     public Position addPosition(Position position) {
         return posRepo.save(position);
+    }
+
+    @Override
+    public List<Stages> getStages() {
+        // TODO Auto-generated method stub
+        return stRepo.findAll();
+    }
+
+    @Override
+    public Stages addStage(Stages stages) {
+        return stRepo.save(stages);
+    }
+
+    @Override
+    public Grade addGrade(Grade grade) {
+        // TODO Auto-generated method stub
+        return grRepo.save(grade);
+    }
+
+    @Override
+    public List<Grade> getGrades() {
+        // TODO Auto-generated method stub
+        return grRepo.findAll();
     }
     
 }
