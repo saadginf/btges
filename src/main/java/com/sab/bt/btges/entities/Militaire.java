@@ -23,6 +23,7 @@ public class Militaire implements Serializable{
     private String prenom;
     private Boolean sexe;
     private Boolean detacheAuCorps;
+    private int anneenaissance;
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
     @Temporal(TemporalType.DATE)
@@ -610,4 +611,16 @@ public class Militaire implements Serializable{
         this.noteCie = noteCie;
     }
     
+
+     
+    public int getAnnenaissance() {
+        return anneenaissance;
+    }
+
+    
+    public void setAnnenaissance(int a) {
+        this.anneenaissance=a;
+    }
+
+
 }

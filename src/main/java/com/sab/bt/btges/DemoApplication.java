@@ -2,8 +2,10 @@ package com.sab.bt.btges;
 
 import java.util.List;
 
-import com.sab.bt.btges.entities.Categorie;
+import com.sab.bt.btges.daopersonel.MilitaireRepository;
+import com.sab.bt.btges.entities.RecapGr;
 import com.sab.bt.btges.metierpersonel.AdminMetier;
+import com.sab.bt.btges.metierpersonel.EffectifMetier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,8 +15,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
 @Autowired
-AdminMetier adm;
-	
+EffectifMetier effMet;
+@Autowired
+MilitaireRepository mrepo;
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 
@@ -26,10 +29,12 @@ AdminMetier adm;
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-		List<Categorie> listCat = adm.getCategories();
-		Categorie cat = listCat.get(0);
-		System.out.println(cat.getId());
+		//List<RecapGr> rp =  effMet.fichePotentiel();
+		//for (RecapGr recapGr : rp) {
+		//	System.out.println(recapGr);
+		//}
+		//int abgAge =  mrepo.getsumGr(76L);
+		//System.out.println("---------------------"+ abgAge+"---------------------------");
 	}
 
 }

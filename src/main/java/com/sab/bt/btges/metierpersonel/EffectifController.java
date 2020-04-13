@@ -22,6 +22,8 @@ public class EffectifController {
 
     @Autowired
     private AdminMetier adm;
+    @Autowired
+    private EffectifMetier eff;
 
     @RequestMapping("/ajouterMilitaire")
     public String index(Model model) {
@@ -29,38 +31,33 @@ public class EffectifController {
         List<Grade> listGr = adm.getGrades();
         model.addAttribute("listGr", listGr);
         List<Origine> listOr = adm.getOrigines();
-        model.addAttribute("listOr",listOr);
+        model.addAttribute("listOr", listOr);
         List<Position> listPos = adm.getPositions();
-        model.addAttribute("listPos",listPos);
+        model.addAttribute("listPos", listPos);
         List<Stages> listSt = adm.getStages();
-        model.addAttribute("listSt",listSt);
-        List<Categorie> listCat= adm.getCategories();
-        model.addAttribute("listCat",listCat);
+        model.addAttribute("listSt", listSt);
+        List<Categorie> listCat = adm.getCategories();
+        model.addAttribute("listCat", listCat);
         return "ajouterMilitaire";
     }
 
-
-
     @RequestMapping(value = "/saveMilitaire", method = RequestMethod.POST)
-    public String ajouterMilitaire(@RequestParam("matricule")String matricule, 
+    public String ajouterMilitaire(
+    @RequestParam("matricule")String matricule, 
+    @RequestParam("nom")String nom, 
     @RequestParam("prenom")String prenom, 
     @RequestParam("datenaissance") @DateTimeFormat(pattern = "yyyy-MM-dd")Date datenaissance, 
     @RequestParam("sexe")String sexe,
     @RequestParam("detacheAuCorps") String detacheAuCorps, 
     @RequestParam("stages")String[] stages, 
     @RequestParam("position")String position, 
-    String origine, 
-    String categorie, 
-    String grade) {
+    @RequestParam("origine")String origine, 
+    @RequestParam("categorie")String categorie, 
+    @RequestParam("grade")String grade) {
 		// TODO Auto-generated method stub
         
-        System.out.println("teeest--------------------------------");
-        System.out.println(sexe+" "+prenom+" "+datenaissance+" "+matricule+" "+detacheAuCorps+"----"+position+"--"+stages.length+"--"+origine);
-        
+        eff.ajouterMilitaire(matricule, nom, prenom, datenaissance, sexe, detacheAuCorps, stages, position, origine, categorie, grade);
         return "ajouterMilitaire";
 	}
-
-
-
 
 }

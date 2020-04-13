@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.sab.bt.btges.entities.Militaire;
+import com.sab.bt.btges.entities.RecapGr;
 
 public interface EffectifMetier {
     
@@ -13,11 +14,15 @@ public interface EffectifMetier {
         String prenom,
         Date datenaissance,
         String sexe,
-        Boolean detacheAuCorps,
-        List<String> Stages,
+        String detacheAuCorps,
+        String[] Stages,
         String position,
         String origine,
         String categorie,
         String grade
+        
      );
+
+
+     public List<RecapGr> fichePotentiel();
 }
