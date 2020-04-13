@@ -67,6 +67,9 @@ public class Militaire implements Serializable{
   inverseJoinColumns = @JoinColumn(name = "STG_id"))     
     private Set<Stages> stages =new HashSet <Stages> ();
     
+    @JoinColumn(name="ID_ST_ACTIF")
+    private Stages stageActif;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "note_sport", referencedColumnName = "id")
     private noteSportAnnuelle ntSA;

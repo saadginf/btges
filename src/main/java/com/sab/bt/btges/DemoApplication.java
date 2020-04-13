@@ -33,8 +33,10 @@ MilitaireRepository mrepo;
 		//for (RecapGr recapGr : rp) {
 		//	System.out.println(recapGr);
 		//}
-		//int abgAge =  mrepo.getsumGr(76L);
-		//System.out.println("---------------------"+ abgAge+"---------------------------");
+		int abgAge =  mrepo.getNumbPerGr(76L);
+		int abCount = mrepo.getAvgAgeGr(76L);
+
+		System.out.println("---------------------"+ abgAge+"---------------"+abCount+"------------");
 	}
 
 }

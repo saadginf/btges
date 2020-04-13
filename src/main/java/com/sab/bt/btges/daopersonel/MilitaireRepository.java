@@ -24,9 +24,10 @@ public interface MilitaireRepository extends JpaRepository<Militaire,String>{
 
   
     
-    @Query(value = "SELECT sum(anneenaissance) from Militaire where id_gr = ?1", nativeQuery = true)
-    int getsumGr(Long gr);
-
+    @Query(value = "SELECT count(matricule) from Militaire where id_gr = ?1", nativeQuery = true)
+    int getNumbPerGr(Long gr);
+    @Query(value = "SELECT avg(anneenaissance) from Militaire where id_gr = ?1", nativeQuery = true)
+    int getAvgAgeGr(Long gr);
 
 
 }

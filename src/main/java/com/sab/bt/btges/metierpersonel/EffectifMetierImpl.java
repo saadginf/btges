@@ -1,6 +1,7 @@
 package com.sab.bt.btges.metierpersonel;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import java.util.HashSet;
@@ -101,6 +102,8 @@ public class EffectifMetierImpl implements EffectifMetier {
             rG.setNbrSF(mRepo.findByGradeAndSexeTrue(grade).size());
             rG.setNbrSM(mRepo.findByGradeAndSexeFalse(grade).size());
            
+            rG.setMoyAge(Calendar.getInstance().get(Calendar.YEAR)-mRepo.getAvgAgeGr(grade.getId()));
+
             
            
             recapGr.add(rG);
