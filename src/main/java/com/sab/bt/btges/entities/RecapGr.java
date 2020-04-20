@@ -1,6 +1,7 @@
 package com.sab.bt.btges.entities;
 
-import java.util.HashMap;
+
+import java.util.List;
 
 
 public class RecapGr {
@@ -15,9 +16,9 @@ public class RecapGr {
     private int nbrSF;
     private int ops;
     private int nbrDetacheAuCorps;
-    private Long nbrDetacheDuCorps;
-    private HashMap<String,Integer> stages;
-    private double moyAge; 
+    private int nbrDetacheDuCorps;
+    private List<Object[]> stages;
+    private int moyAge; 
 
     /**
      * @return String return the grade
@@ -134,42 +135,42 @@ public class RecapGr {
     /**
      * @return int return the nbrDetacheDuCorps
      */
-    public Long getNbrDetacheDuCorps() {
+    public int getNbrDetacheDuCorps() {
         return nbrDetacheDuCorps;
     }
 
     /**
      * @param long1 the nbrDetacheDuCorps to set
      */
-    public void setNbrDetacheDuCorps(Long long1) {
+    public void setNbrDetacheDuCorps(int long1) {
         this.nbrDetacheDuCorps = long1;
     }
 
     /**
      * @return HashMap<String,Integer> return the stages
      */
-    public HashMap<String,Integer> getStages() {
+    public List<Object[]> getStages() {
         return stages;
     }
 
     /**
      * @param stages the stages to set
      */
-    public void setStages(HashMap<String,Integer> stages) {
+    public void setStages(List<Object[]> stages) {
         this.stages = stages;
     }
 
     /**
      * @return double return the moyAge
      */
-    public double getMoyAge() {
+    public int getMoyAge() {
         return moyAge;
     }
 
     /**
      * @param moyAge the moyAge to set
      */
-    public void setMoyAge(double moyAge) {
+    public void setMoyAge(int moyAge) {
         this.moyAge = moyAge;
     }
 
@@ -193,7 +194,7 @@ public class RecapGr {
         return "RecapGr [grade=" + grade + ", moyAge=" + moyAge + ", nbrDetacheAuCorps=" + nbrDetacheAuCorps
                 + ", nbrDetacheDuCorps=" + nbrDetacheDuCorps + ", nbrOrAsp=" + nbrOrAsp + ", nbrOrEcole=" + nbrOrEcole
                 + ", nbrOrRang=" + nbrOrRang + ", nbrOrSpe=" + nbrOrSpe + ", nbrSF=" + nbrSF + ", nbrSM=" + nbrSM
-                + ", ops=" + ops + ", stages=" + stages + "]";
+                + ", ops=" + ops + ", stages=(" + stages + ")]";
     }
 
 }

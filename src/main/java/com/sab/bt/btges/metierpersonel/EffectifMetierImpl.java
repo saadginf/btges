@@ -2,6 +2,8 @@ package com.sab.bt.btges.metierpersonel;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 import java.util.HashSet;
@@ -55,17 +57,23 @@ public class EffectifMetierImpl implements EffectifMetier {
         m.setNom(nom);
         m.setPrenom(prenom);
         m.setDateNaissance(datenaissance);
+
         m.setSexe(sexe.equals("1") ? true : false);
         m.setPosition(posRepo.findById(Long.parseLong(position)).get());
         m.setCategorie(catRepo.findById(Long.parseLong(categorie)).get());
         m.setGrade(grRepo.findById(Long.parseLong(grade)).get());
         m.setOrigine(orRepo.findById(Long.parseLong(origine)).get());
         m.setDetacheAuCorps(detacheAuCorps.equals("0") ? true : false);
+        m.setAnnenaissance(datenaissance.getYear() +1900);
         Set<Stages> st = new HashSet<Stages>();
+                
         for (String s : stages) {
             st.add(stRepo.findById(Long.parseLong(s)).get());
         }
         m.setStages(st);
+
+        Stages stageActif =  Collections.max(st, Comparator.comparing(s ->s.getValeur() ));
+        m.setStageActif(stageActif);
         return mRepo.save(m);
     }
 
@@ -79,7 +87,8 @@ public class EffectifMetierImpl implements EffectifMetier {
 
             RecapGr rG= new RecapGr();
             rG.setGrade(grade.getLibbele());
-            
+
+            if(!mRepo.findByGrade(grade).isEmpty()) {
             Origine orEcole = orRepo.findById(90L).get();
             rG.setNbrOrEcole(mRepo.findByGradeAndOrigine(grade, orEcole).size());
             
@@ -97,14 +106,17 @@ public class EffectifMetierImpl implements EffectifMetier {
 
             Position ps = posRepo.findById(31L).get();
             rG.setNbrDetacheAuCorps(mRepo.findByGradeAndDetacheAuCorps(grade, true).size());
-            rG.setNbrDetacheDuCorps(mRepo.countByGradeAndPositionNot(grade, ps));
-            
+            rG.setNbrDetacheDuCorps(mRepo.findByGradeAndPositionNot(grade, ps).size());
+            rG.setOps(mRepo.findByGradeAndPosition(grade, ps).size());
             rG.setNbrSF(mRepo.findByGradeAndSexeTrue(grade).size());
             rG.setNbrSM(mRepo.findByGradeAndSexeFalse(grade).size());
-           
-            rG.setMoyAge(Calendar.getInstance().get(Calendar.YEAR)-mRepo.getAvgAgeGr(grade.getId()));
-
-            
+           if ( mRepo.getAvgAgeGr(grade.getId()) == 0   ) rG.setMoyAge(0);else{
+           int dif = (int) (Calendar.getInstance().get(Calendar.YEAR) - mRepo.getAvgAgeGr(grade.getId()));
+            rG.setMoyAge(dif);
+           }
+           List<Object[]> s = mRepo.countStagesByGrade(grade.getId());
+           rG.setStages(s);
+       }
            
             recapGr.add(rG);
         }

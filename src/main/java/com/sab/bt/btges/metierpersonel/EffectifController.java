@@ -7,6 +7,7 @@ import com.sab.bt.btges.entities.Categorie;
 import com.sab.bt.btges.entities.Grade;
 import com.sab.bt.btges.entities.Origine;
 import com.sab.bt.btges.entities.Position;
+import com.sab.bt.btges.entities.RecapGr;
 import com.sab.bt.btges.entities.Stages;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,13 @@ public class EffectifController {
         
         eff.ajouterMilitaire(matricule, nom, prenom, datenaissance, sexe, detacheAuCorps, stages, position, origine, categorie, grade);
         return "ajouterMilitaire";
-	}
+    }
+    @RequestMapping("/fpu")
+    public String fpu(Model model) {
+
+      List<RecapGr> recap = eff.fichePotentiel();
+      model.addAttribute("recap", recap);
+        return "fpu";
+    }
 
 }

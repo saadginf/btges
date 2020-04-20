@@ -23,7 +23,7 @@ public class Militaire implements Serializable{
     private String prenom;
     private Boolean sexe;
     private Boolean detacheAuCorps;
-    private int anneenaissance;
+    private double anneenaissance;
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
     @Temporal(TemporalType.DATE)
@@ -66,7 +66,7 @@ public class Militaire implements Serializable{
   joinColumns = @JoinColumn(name = "MIL_id"), 
   inverseJoinColumns = @JoinColumn(name = "STG_id"))     
     private Set<Stages> stages =new HashSet <Stages> ();
-    
+    @ManyToOne
     @JoinColumn(name="ID_ST_ACTIF")
     private Stages stageActif;
 
@@ -119,6 +119,14 @@ public class Militaire implements Serializable{
     private boolean aptitudeExploit;
     private boolean aptitudeInfo;
 
+
+    public Stages getStageActif(){
+        return stageActif;
+    }
+    public void setStageActif(Stages st){
+        this.stageActif = st;
+    }
+
     /**
      * @return String return the matricule
      */
@@ -153,6 +161,10 @@ public class Militaire implements Serializable{
     public String getPrenom() {
         return prenom;
     }
+
+    
+
+
 
     /**
      * @param prenom the prenom to set
@@ -616,12 +628,12 @@ public class Militaire implements Serializable{
     
 
      
-    public int getAnnenaissance() {
+    public double getAnnenaissance() {
         return anneenaissance;
     }
 
     
-    public void setAnnenaissance(int a) {
+    public void setAnnenaissance(double a) {
         this.anneenaissance=a;
     }
 

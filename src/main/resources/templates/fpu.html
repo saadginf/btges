@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html layout:decorator="~{template1.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div layout:fragment="content">
+       
+
+
+        <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Personnel</th>
+                    <th>Ecolde</th>
+                    <th>C.ASP</th>
+                    <th>C.SPE</th>
+                    <th>RANG</th>
+                    <th>M</th>
+                    <th>F</th>
+                    <th>OPS</th>
+                    <th>D au C </th>
+                    <th>D du C </th>
+                    <th>Diplome</th>
+                    <th>M.age</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Personnel</th>
+                    <th>Ecolde</th>
+                    <th>C.ASP</th>
+                    <th>C.SPE</th>
+                    <th>RANG</th>
+                    <th>M</th>
+                    <th>F</th>
+                    <th>OPS</th>
+                    <th>D au C </th>
+                    <th>D du C </th>
+                    <th>Diplome</th>
+                    <th>M.age</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                    <tr th:each="c:${recap}">
+                      
+                        <td th:text="${c.grade}"></td>
+                        <td th:text="${c.nbrOrEcole}"></td>
+                        <td th:text="${c.nbrOrAsp}"></td>
+                        <td th:text="${c.nbrOrSpe}"></td>
+                        <td th:text="${c.nbrOrRang}"></td>
+                        <td th:text="${c.nbrSM}"></td>
+                        <td th:text="${c.nbrSF}"></td>
+                        <td th:text="${c.ops}"></td>
+                        <td th:text="${c.nbrDetacheAuCorps}"></td>
+                        <td th:text="${c.nbrDetacheDuCorps}"></td>
+                       <td>
+                        <span th:each="address : ${c.stages}">
+                            <span th:text="${'('+address[1]+')'} "></span>
+                            <span th:text="${address[0]}"></span>
+                            
+                            <br>
+                        </span>
+                    </td>
+                        <td th:text="${c.moyAge}"></td>
+                      </tr>
+                 
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+  
+
+</body>
+</html>

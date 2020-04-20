@@ -1,8 +1,10 @@
 package com.sab.bt.btges;
 
+import java.util.Calendar;
 import java.util.List;
 
 import com.sab.bt.btges.daopersonel.MilitaireRepository;
+import com.sab.bt.btges.entities.Militaire;
 import com.sab.bt.btges.entities.RecapGr;
 import com.sab.bt.btges.metierpersonel.AdminMetier;
 import com.sab.bt.btges.metierpersonel.EffectifMetier;
@@ -29,14 +31,25 @@ MilitaireRepository mrepo;
 
 	@Override
 	public void run(String... args) throws Exception {
-		//List<RecapGr> rp =  effMet.fichePotentiel();
-		//for (RecapGr recapGr : rp) {
-		//	System.out.println(recapGr);
-		//}
-		int abgAge =  mrepo.getNumbPerGr(76L);
-		int abCount = mrepo.getAvgAgeGr(76L);
+	List<RecapGr> recapGr = effMet.fichePotentiel();
+	for (RecapGr recapGr2 : recapGr) {
+	System.out.println(recapGr2);
+}
+	//	List<Object[]> s = mrepo.countStagesByGrade(77L);
 
-		System.out.println("---------------------"+ abgAge+"---------------"+abCount+"------------");
+	//	for (Object[] objects : s) {
+	//		System.out.println(objects[0]+"-----"+objects[1]);
+	//	}
+
+		//}
+		//int abgAge =  mrepo.getNumbPerGr(76L);
+		//int abCount = mrepo.getAvgAgeGr(76L);
+
+		//System.out.println("---------------------"+ l.size()+"------------");
+		//int year = Calendar.getInstance().get(Calendar.YEAR);
+		//double abcount = mrepo.getAvgAgeGr(78L);
+		//int dif = (int) (year - abcount);
+		//System.out.println("---------------------"+ dif+"---------------"+ abcount + "------------");
 	}
 
 }
